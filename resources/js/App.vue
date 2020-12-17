@@ -1,12 +1,19 @@
 <template>
-        <main class="py-4 container">
-            <router-view></router-view>
-        </main>
+    <main>
+        <app-nav />
+        <router-view></router-view>
+    </main>
 </template>
 
 
 <script>
+    import AppNav from "./components/global/AppNav";
+
     export default {
-        name: "App"
+        name: "App",
+        components: {
+            AppNav
+        }
     }
 </script>
+

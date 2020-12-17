@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    @apply p-6 bg-gray-300;
+}

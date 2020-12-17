@@ -19,4 +19,9 @@ Route::get('/', [IndexController::class, 'index']);
 
 Auth::routes();
 
+//Route::post('login', [
+//    'as' => '',
+//    'uses' => 'Auth\LoginController@login'
+//]);
+
 Route::get('/{any}', [IndexController::class, 'index'])->where('any', '.*');;

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Sport Radar Project</title>
+    <title>Player Teams Project</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/main.js') }}" defer></script>

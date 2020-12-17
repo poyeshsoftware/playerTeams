@@ -31168,6 +31168,12 @@ video {
           animation: bounce 1s infinite;
 }
 
+body {
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+  padding: 1.5rem;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

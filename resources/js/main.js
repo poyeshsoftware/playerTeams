@@ -15,6 +15,10 @@ import store from './store/index'
 window.Vue = require('vue');
 Vue.use(VueRouter);
 import routes from './routes'
+
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://playerteams.test';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
