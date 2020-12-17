@@ -10,31 +10,16 @@
                 <div class="flex justify-between mb-8 items-center">
 
                     <router-link class="bg-blue-400 rounded-lg p-2 text-white font-bold bg-blue-500"
-                                 :to="{name: 'addPlayer'}">Add Player
+                                 :to="{name: 'addTeam'}">Add Team
                     </router-link>
-
-                    <div class="w-64 h-8 block">
-
-                        <select v-model="defaultFilterSelected"
-                                class="form-select mt-1 block border rounded w-full px-2 py-2">
-                            <option v-for="item in this.$store.getters.teamsForFilteringNames">
-                                {{item}}
-                            </option>
-                        </select>
-
-                    </div>
-
                 </div>
-                <div v-for="(player,index) in this.$store.state.players" :key="index">
+                <div v-for="(team,index) in this.$store.state.teams" :key="index">
                     <ul>
                         <li class="mb-4 border border-gray-400 border-2 p-2 rounded-lg flex justify-between items-center">
                             <div class="flex flex-col w-full items-center">
 
                                 <p class="px-4 w-full py-2 font-bold text-black">
-                                    {{player.name}}
-                                </p>
-                                <p class="px-4 w-full pb-2 text-black">
-                                    <span class="text-sm">Team: {{player.team.name}}</span>
+                                    {{team.name}}
                                 </p>
 
                             </div>
@@ -68,6 +53,8 @@
         </div>
 
         <delete-component v-if="showDelete"
+                          :the-name="deleteDialogName"
+                          :the-message="deleteDialoMessage"
                           @confirmDelete="handleDelete"
                           @cancelModal="cancelDeleteModal"/>
 
@@ -80,11 +67,12 @@
     import DeleteComponent from "../components/DeleteComponent";
 
     export default {
-        name: "Dashboard.vue",
+        name: "TeamsPage.vue",
         components: {TheNavigation, DeleteComponent},
         data() {
             return {
-                defaultFilterSelected: 'All Teams',
+                deleteDialogName: "Team",
+                deleteDialoMessage: "All the players related to this team will be deleted !",
                 deleteIndex: null,
                 showDelete: false,
             }
@@ -93,16 +81,6 @@
             changeSportFilter(item) {
                 this.SportFilter = item;
             },
-            async getPlayers() {
-                var teamIdQuery = '';
-                if (this.defaultFilterSelected !== "All Teams") {
-                    teamIdQuery = '?team_id=' + this.findTeamIdByName(this.defaultFilterSelected)[0].id;
-                }
-
-                let response = await axios.get("/api/players" + teamIdQuery);
-                this.$store.commit('SET_PLAYERS', Object.assign(response.data.data));
-            }
-            ,
             findTeamIdByName(teamName) {
                 return this.$store.state.teams.filter(teamItem => {
                     if (teamItem.name === teamName) {
@@ -114,10 +92,11 @@
                 this.showDelete = true;
             },
             async handleDelete() {
-                let response = await axios.delete("/api/players/" + this.$store.state.players[this.deleteIndex].id);
+                let response = await axios.delete("/api/teams/" + this.$store.state.teams[this.deleteIndex].id);
                 if (response.status === 200) {
                     this.cancelDeleteModal();
-                    this.getPlayers();
+                    await this.$store.dispatch('fetchTeamsData');
+                    await this.$store.dispatch('fetchPlayersData');
                 }
             },
             cancelDeleteModal() {
@@ -153,7 +132,6 @@
         },
         mounted() {
             this.$store.dispatch('fetchTeamsData', this.form);
-            this.$store.dispatch('fetchPlayersData', this.form);
         }
     }
 </script>

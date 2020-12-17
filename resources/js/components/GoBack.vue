@@ -1,6 +1,6 @@
 <template>
-  <span class="p-2 rounded bg-blue-500 text-white font-bold">
-    <button @click="goBack">< go back</button>
+  <span >
+    <button class="bg-blue-400 rounded-lg p-2 text-white font-bold bg-blue-500" @click="goBack">< go back</button>
   </span>
 </template>
 

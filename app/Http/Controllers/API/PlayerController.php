@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlayerRequest;
 use App\Http\Resources\PlayerJsonResource;
 use App\Models\Player;
-use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
@@ -15,40 +15,32 @@ class PlayerController extends Controller
     public function index()
     {
         return PlayerJsonResource::collection(Player::withFilters());
-}
+    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlayerRequest $request)
     {
-        //
+        return Player::create($request->validated());
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Player  $player
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Player $player)
+    public function update(PlayerRequest $request, Player $player)
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Player  $player
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Player $player)
     {
-        //
+        $player->delete();
     }
 }

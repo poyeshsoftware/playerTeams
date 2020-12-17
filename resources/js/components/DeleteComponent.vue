@@ -73,7 +73,6 @@
                 this.$emit('cancelModal');
             },
             confirmDelete() {
-
                 this.$emit('confirmDelete');
             }
         },
