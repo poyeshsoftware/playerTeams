@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\PlayerController;
+use App\Http\Controllers\API\TeamsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/players', [PlayerController::class, 'index'])->name('players');
+    Route::get('/teams', [TeamsController::class, 'index'])->name('teams');
 });

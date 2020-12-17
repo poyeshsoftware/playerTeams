@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Index\IndexController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 
-Auth::routes();
+Route::post('login', [
+    LoginController::class, 'login'
+]);
 
-//Route::post('login', [
-//    'as' => '',
-//    'uses' => 'Auth\LoginController@login'
-//]);
+Route::post('logout', [
+    LoginController::class, 'logout'
+]);
 
 Route::get('/{any}', [IndexController::class, 'index'])->where('any', '.*');;

@@ -2,5 +2,8 @@
 // = state
 export default {
     authenticated: false,
-    user: null
+    user: null,
+    teams: [],
+    players: [],
+
 }

@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name', 'id'
+    ];
 
-
-    public function team()
+    public function player()
     {
-        return $this->hasOne(Team::class);
+        return $this->hasOne(Player::class);
     }
 }

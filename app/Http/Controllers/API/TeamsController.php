@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TeamJsonResource;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -10,18 +11,16 @@ class TeamsController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return TeamJsonResource::collection(Team::All());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -32,8 +31,8 @@ class TeamsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Team  $team
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Team $team
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Team $team)
@@ -44,7 +43,7 @@ class TeamsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Team  $team
+     * @param \App\Models\Team $team
      * @return \Illuminate\Http\Response
      */
     public function destroy(Team $team)
