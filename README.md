@@ -53,7 +53,7 @@ VueJs, TailwindCss, Vuex, Vue-Router
 
 Do one of these 2 steps:
 
-- run command : `php artisan db:seed`, if you want to generate default User for logging in and also some ( Recommended )
+- run command : `php artisan db:seed`, if you want to generate default User for logging in and also a few players and teams ( Recommended )
 
 or
 
