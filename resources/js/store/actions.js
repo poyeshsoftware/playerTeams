@@ -7,7 +7,7 @@ export default { // = methods
     },
 
     async signOut({dispatch}) {
-        await axios.post('/logout')
+        await axios.post('/logout');
 
         return dispatch('me')
     },

@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    })->name('user');
+    
     Route::get('/players', [PlayerController::class, 'index'])->name('players');
     Route::post('/players', [PlayerController::class, 'store'])->name('players.store');
     Route::patch('/players/{player:id}', [PlayerController::class, 'update'])->name('players.update');
