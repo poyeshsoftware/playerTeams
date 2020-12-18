@@ -34,6 +34,7 @@ for Backeend:
 Routing, Controllers, FormRequests, JsonResources, Database Migration Files, Seeders, Factories, UnitTesting
 
 for Front-end:
+
 VueJs, TailwindCss, Vuex, Vue-Router
 
 ### Video Introduction ,I say Definitely have a look at it !
