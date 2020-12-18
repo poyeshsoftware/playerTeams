@@ -18,9 +18,9 @@ Player D is part of Team 2
 
 The Vue JS or React JS app should display a table which should contain the following data:
 
-Player Name | Team Name | Actions
-============================
-Player A         | Team 1        | Edit Delete      
+Player Name - Team Name - Actions
+
+Player A         -   Team 1        - Edit Delete      
 
 Implement the actions in order to be able to edit a player or to delete a player.
 
