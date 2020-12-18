@@ -1,62 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Player And Teams
+I have used Laravel as back-end Php Framework and ( Vue.Js And TailwindCss for front-end ) .
+I also used Laravel Sanctum for Authentication. 
 
-## About Laravel
+Create a client and server application. The client can be implemented in vue JS or React JS.
+The server must be implemented using Laravel. The client must communicate with the server
+using an API (no Blade templates). 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Create tables in a database which allow to associate a player with a team. Fill the tables with data.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+For example:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Player A is part of Team 1
+Player B is part of Team 1
+Player C is part of Team 2
+Player D is part of Team 2
 
-## Learning Laravel
+The Vue JS or React JS app should display a table which should contain the following data:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Player Name | Team Name | Actions
+============================
+Player A         | Team 1        | Edit Delete      
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Implement the actions in order to be able to edit a player or to delete a player.
 
-## Laravel Sponsors
+When editing a player, it must be possible to change the name and the team of the player.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+There should be the possibility to add a new player as well.
 
-### Premium Partners
+### Video Introduction ,I say Definitely have a look at it !
+ [Watch Video - Click Here ]() 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+## How to Setup project
 
-## Contributing
+- run command : `composer install`
+- run command : `npm install`
+- run command : `php artisan key:generate`
+- change `.env.example` File to `.env`
+- set SANCTUM_STATEFUL_DOMAINS below APP_URL in .env file to your domain name. ( like SANCTUM_STATEFUL_DOMAINS=playerteams.test )
+- set SESSION_DOMAIN in .env file to your domain name as well. ( like SESSION_DOMAIN=playerteams.test )
+- set SESSION_DRIVER in .env file to Cookie . ( like SESSION_DRIVER=cookie )
+- run command : `php artisan migrate`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Do one of these 2 steps:
 
-## Code of Conduct
+- run command : `php artisan db:seed`, if you want to generate default User for logging in and also some ( Recommended )
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+or
 
-## Security Vulnerabilities
+- run command : `php artisan db:seed --class=UserSeeder`, if you want to generate just a User and add data by your self.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+then
 
-## License
+- run command : `npm rum watch`
+- run command : `php artisan serve`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+to run tests you can use this command in terminal (command line):
+
+ `php artisan test`
+ 
+ or
+ 
+ `./vendor/bin/phpunit`
+
+#### UserName And Password For Logging In
+Username:
+ilove@germany.com
+
+Password:
+results.com
+
+### Don't forget
+to use Laravel Sanctum for authentication you neeed to set SANCTUM_STATEFUL_DOMAINS below APP_URL in .env file to your domain name.
+also change the SESSION_DOMAIN and SESSION_DRIVER as I explained.
+
+# Made By :
+Payam GhaderKourehpaz [https://payam.pro](https://payam.pro)
