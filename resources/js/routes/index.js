@@ -4,6 +4,7 @@ import store from "../store/index";
 import TeamsPage from "../pages/TeamsPage";
 import AddTeamPage from "../pages/AddTeamPage";
 import AddPlayerPage from "../pages/AddPlayerPage";
+import PageNotFound from "../pages/PageNotFound";
 
 export default {
     mode: 'history',
@@ -14,7 +15,7 @@ export default {
             name: 'index',
             beforeEnter: (to, from, next) => {
                 if(store.state.authenticated === true) {
-                    next('/dashboard');
+                    next('/players');
                 } else {
                     next();
                 }
@@ -82,7 +83,7 @@ export default {
             }
         },{
             path: '/teams/edit/:id',
-            component: AddPlayerPage,
+            component: AddTeamPage,
             name: 'editTeam',
             props: true,
             beforeEnter: (to, from, next) => {
@@ -93,5 +94,6 @@ export default {
                 }
             }
         },
+        { path: "*", component: PageNotFound }
     ]
 }

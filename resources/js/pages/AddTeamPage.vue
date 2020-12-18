@@ -47,11 +47,6 @@
                     this.name
                 );
             },
-            // sportIds() {
-            //     return this.sports.map(sportItem => {
-            //         return sportItem.id
-            //     });
-            // }
         },
         methods: {
             sendRequest() {
@@ -74,15 +69,14 @@
                 }
             },
             async SendUpdateRequest() {
-                // const response = await axios.patch('/api/teams/' + this.propId, {
-                //     name: this.name,
-                //     sports: this.sportIds,
-                // });
-                //
-                // if (response.status === 200) {
-                //     await this.$store.dispatch('fetchTeamsData');
-                //     this.$router.push({name: 'teams'});
-                // }
+                const response = await axios.patch('/api/teams/' + this.propId, {
+                    name: this.name
+                });
+
+                if (response.status === 200) {
+                    await this.$store.dispatch('fetchTeamsData');
+                    this.$router.push({name: 'teams'});
+                }
             },
         },
         mounted() {

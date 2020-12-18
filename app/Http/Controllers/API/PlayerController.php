@@ -33,7 +33,7 @@ class PlayerController extends Controller
      */
     public function update(PlayerRequest $request, Player $player)
     {
-
+        return $player->update($request->validated());
     }
 
     /**

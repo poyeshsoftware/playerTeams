@@ -31,7 +31,7 @@ class TeamsController extends Controller
      */
     public function update(TeamRequest $request, Team $team)
     {
-
+        return $team->update($request->validated());
     }
 
     /**

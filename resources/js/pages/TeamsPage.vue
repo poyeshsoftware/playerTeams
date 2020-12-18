@@ -103,21 +103,18 @@
                 this.showDelete = false;
                 this.deleteIndex = null;
             }, goForEdit(index) {
-                let the_team = this.teams[index];
+                let the_team = this.$store.state.teams[index];
                 console.log(the_team.id);
                 console.log(the_team.name);
-                // this.$router.push({
-                //     name: 'edit_event',
-                //     params: {
-                //         id: the_event.id,
-                //         isUpdate: true,
-                //         propId: the_event.id,
-                //         propDate: the_event.date,
-                //         propSport: the_event.sport.name,
-                //         propTeam1: the_event.team_1.name,
-                //         propTeam2: the_event.team_2.name,
-                //     }
-                // })
+                this.$router.push({
+                    name: 'editTeam',
+                    params: {
+                        id: the_team.id,
+                        isUpdate: true,
+                        propId: the_team.id,
+                        propName: the_team.name,
+                    }
+                })
             }
         },
         watch: {

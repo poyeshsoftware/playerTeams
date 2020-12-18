@@ -124,21 +124,19 @@
                 this.showDelete = false;
                 this.deleteIndex = null;
             }, goForEdit(index) {
-                let the_team = this.teams[index];
-                console.log(the_team.id);
-                console.log(the_team.name);
-                // this.$router.push({
-                //     name: 'edit_event',
-                //     params: {
-                //         id: the_event.id,
-                //         isUpdate: true,
-                //         propId: the_event.id,
-                //         propDate: the_event.date,
-                //         propSport: the_event.sport.name,
-                //         propTeam1: the_event.team_1.name,
-                //         propTeam2: the_event.team_2.name,
-                //     }
-                // })
+                let the_player = this.$store.state.players[index];
+                console.log(the_player.id);
+                console.log(the_player.name);
+                this.$router.push({
+                    name: 'editPlayer',
+                    params: {
+                        id: the_player.id,
+                        isUpdate: true,
+                        propId: the_player.id,
+                        propName: the_player.name,
+                        propTeam: the_player.team.name,
+                    }
+                })
             }
         },
         watch: {

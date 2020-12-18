@@ -2130,6 +2130,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     signOut: function signOut() {
@@ -2290,21 +2294,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    SendUpdateRequest: function SendUpdateRequest() {// const response = await axios.patch('/api/teams/' + this.propId, {
-      //     name: this.name,
-      //     sports: this.sportIds,
-      // });
-      //
-      // if (response.status === 200) {
-      //     await this.$store.dispatch('fetchTeamsData');
-      //     this.$router.push({name: 'teams'});
-      // }
+    SendUpdateRequest: function SendUpdateRequest() {
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var teamId, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                teamId = _this2.findTeamIdByName(_this2.team);
+                _context2.next = 3;
+                return axios.patch('/api/players/' + _this2.propId, {
+                  name: _this2.name,
+                  team_id: teamId[0].id
+                });
+
+              case 3:
+                response = _context2.sent;
+
+                if (!(response.status === 200)) {
+                  _context2.next = 8;
+                  break;
+                }
+
+                _context2.next = 7;
+                return _this2.$store.dispatch('fetchPlayersData');
+
+              case 7:
+                _this2.$router.push({
+                  name: 'dashboard'
+                });
+
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -2392,12 +2414,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   computed: {
     canSendForm: function canSendForm() {
       return this.name;
-    } // sportIds() {
-    //     return this.sports.map(sportItem => {
-    //         return sportItem.id
-    //     });
-    // }
-
+    }
   },
   methods: {
     sendRequest: function sendRequest() {
@@ -2447,21 +2464,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    SendUpdateRequest: function SendUpdateRequest() {// const response = await axios.patch('/api/teams/' + this.propId, {
-      //     name: this.name,
-      //     sports: this.sportIds,
-      // });
-      //
-      // if (response.status === 200) {
-      //     await this.$store.dispatch('fetchTeamsData');
-      //     this.$router.push({name: 'teams'});
-      // }
+    SendUpdateRequest: function SendUpdateRequest() {
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                _context2.next = 2;
+                return axios.patch('/api/teams/' + _this2.propId, {
+                  name: _this2.name
+                });
+
+              case 2:
+                response = _context2.sent;
+
+                if (!(response.status === 200)) {
+                  _context2.next = 7;
+                  break;
+                }
+
+                _context2.next = 6;
+                return _this2.$store.dispatch('fetchTeamsData');
+
+              case 6:
+                _this2.$router.push({
+                  name: 'teams'
+                });
+
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -2668,20 +2701,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.deleteIndex = null;
     },
     goForEdit: function goForEdit(index) {
-      var the_team = this.teams[index];
-      console.log(the_team.id);
-      console.log(the_team.name); // this.$router.push({
-      //     name: 'edit_event',
-      //     params: {
-      //         id: the_event.id,
-      //         isUpdate: true,
-      //         propId: the_event.id,
-      //         propDate: the_event.date,
-      //         propSport: the_event.sport.name,
-      //         propTeam1: the_event.team_1.name,
-      //         propTeam2: the_event.team_2.name,
-      //     }
-      // })
+      var the_player = this.$store.state.players[index];
+      console.log(the_player.id);
+      console.log(the_player.name);
+      this.$router.push({
+        name: 'editPlayer',
+        params: {
+          id: the_player.id,
+          isUpdate: true,
+          propId: the_player.id,
+          propName: the_player.name,
+          propTeam: the_player.team.name
+        }
+      });
     }
   },
   watch: {
@@ -2804,6 +2836,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/PageNotFound.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/PageNotFound.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PageNotFound"
 });
 
 /***/ }),
@@ -2964,20 +3024,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.deleteIndex = null;
     },
     goForEdit: function goForEdit(index) {
-      var the_team = this.teams[index];
+      var the_team = this.$store.state.teams[index];
       console.log(the_team.id);
-      console.log(the_team.name); // this.$router.push({
-      //     name: 'edit_event',
-      //     params: {
-      //         id: the_event.id,
-      //         isUpdate: true,
-      //         propId: the_event.id,
-      //         propDate: the_event.date,
-      //         propSport: the_event.sport.name,
-      //         propTeam1: the_event.team_1.name,
-      //         propTeam2: the_event.team_2.name,
-      //     }
-      // })
+      console.log(the_team.name);
+      this.$router.push({
+        name: 'editTeam',
+        params: {
+          id: the_team.id,
+          isUpdate: true,
+          propId: the_team.id,
+          propName: the_team.name
+        }
+      });
     }
   },
   watch: {
@@ -40248,9 +40306,14 @@ var render = function() {
     _c(
       "li",
       [
-        _c("router-link", { attrs: { to: { name: "dashboard" } } }, [
-          _c("h2", [_vm._v("- Players")])
-        ])
+        _c(
+          "router-link",
+          {
+            staticClass: "text-gray-800 font-medium",
+            attrs: { to: { name: "dashboard" } }
+          },
+          [_c("h2", [_vm._v("- Players")])]
+        )
       ],
       1
     ),
@@ -40258,9 +40321,14 @@ var render = function() {
     _c(
       "li",
       [
-        _c("router-link", { attrs: { to: { name: "teams" } } }, [
-          _c("h2", [_vm._v("- Teams")])
-        ])
+        _c(
+          "router-link",
+          {
+            staticClass: "text-gray-800 font-medium",
+            attrs: { to: { name: "teams" } }
+          },
+          [_c("h2", [_vm._v("- Teams")])]
+        )
       ],
       1
     )
@@ -40291,6 +40359,16 @@ var render = function() {
   return _c("div", { staticClass: "flex justify-between mb-10" }, [
     _c("ul", { staticClass: "flex items-center" }, [
       this.$store.state.authenticated
+        ? _c("li", { staticClass: "mr-4" }, [
+            _c("img", {
+              staticClass:
+                "w-7 h-7 border bg-gray-200 border-gray-200 rounded rounded-full",
+              attrs: { src: "/image/germany.png" }
+            })
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      this.$store.state.authenticated
         ? _c(
             "li",
             { staticClass: "mr-4" },
@@ -40298,7 +40376,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "text-gray-800 font-medium",
+                  staticClass: "text-gray-800 font-bold",
                   attrs: { to: { name: "dashboard" } }
                 },
                 [_vm._v("\n                Home\n            ")]
@@ -40315,27 +40393,15 @@ var render = function() {
       [
         this.$store.state.authenticated
           ? [
-              _c(
-                "li",
-                { staticClass: "mr-4" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "text-gray-800 font-medium",
-                      attrs: { to: { name: "account" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(this.$store.state.user.name) +
-                          "\n                "
-                      )
-                    ]
+              _c("li", { staticClass: "mr-8" }, [
+                _c("span", { staticClass: "text-gray-800 font-light" }, [
+                  _vm._v(
+                    "\n                   Welcome " +
+                      _vm._s(this.$store.state.user.name) +
+                      "\n                "
                   )
-                ],
-                1
-              ),
+                ])
+              ]),
               _vm._v(" "),
               _c("li", [
                 _c(
@@ -40971,6 +41037,74 @@ var staticRenderFns = [
         [_vm._v("\n                Sign in\n            ")]
       )
     ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          " w-full bottom-0 mb-6 text-white text-center font-sans text-xl mt-20 text-gray-900"
+      },
+      [
+        _c("span", { staticClass: "opacity-80" }, [_vm._v("Take me back to")]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "border-b border-blue-600 text-blue-600",
+            attrs: {
+              to: { name: "index" },
+              href: "https://tailwindcomponents.com"
+            }
+          },
+          [_vm._v("Main Page")]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "h-full w-full bg-blue-600 flex justify-center content-center flex-wrap mt-20"
+      },
+      [
+        _c("p", { staticClass: "font-sans text-white error-text" }, [
+          _vm._v("404")
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -58435,6 +58569,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/PageNotFound.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/pages/PageNotFound.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PageNotFound_vue_vue_type_template_id_a99009b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true& */ "./resources/js/pages/PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true&");
+/* harmony import */ var _PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageNotFound.vue?vue&type=script&lang=js& */ "./resources/js/pages/PageNotFound.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PageNotFound_vue_vue_type_template_id_a99009b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PageNotFound_vue_vue_type_template_id_a99009b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "a99009b2",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/PageNotFound.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/PageNotFound.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/pages/PageNotFound.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PageNotFound.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/PageNotFound.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/pages/PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_a99009b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/PageNotFound.vue?vue&type=template&id=a99009b2&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_a99009b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageNotFound_vue_vue_type_template_id_a99009b2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/TeamsPage.vue":
 /*!******************************************!*\
   !*** ./resources/js/pages/TeamsPage.vue ***!
@@ -58519,6 +58722,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_TeamsPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/TeamsPage */ "./resources/js/pages/TeamsPage.vue");
 /* harmony import */ var _pages_AddTeamPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/AddTeamPage */ "./resources/js/pages/AddTeamPage.vue");
 /* harmony import */ var _pages_AddPlayerPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/AddPlayerPage */ "./resources/js/pages/AddPlayerPage.vue");
+/* harmony import */ var _pages_PageNotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/PageNotFound */ "./resources/js/pages/PageNotFound.vue");
+
 
 
 
@@ -58533,7 +58738,7 @@ __webpack_require__.r(__webpack_exports__);
     name: 'index',
     beforeEnter: function beforeEnter(to, from, next) {
       if (_store_index__WEBPACK_IMPORTED_MODULE_2__["default"].state.authenticated === true) {
-        next('/dashboard');
+        next('/players');
       } else {
         next();
       }
@@ -58596,7 +58801,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, {
     path: '/teams/edit/:id',
-    component: _pages_AddPlayerPage__WEBPACK_IMPORTED_MODULE_5__["default"],
+    component: _pages_AddTeamPage__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'editTeam',
     props: true,
     beforeEnter: function beforeEnter(to, from, next) {
@@ -58606,6 +58811,9 @@ __webpack_require__.r(__webpack_exports__);
         next();
       }
     }
+  }, {
+    path: "*",
+    component: _pages_PageNotFound__WEBPACK_IMPORTED_MODULE_6__["default"]
   }]
 });
 

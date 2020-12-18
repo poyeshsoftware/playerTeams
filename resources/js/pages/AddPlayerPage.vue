@@ -86,15 +86,17 @@
                 }
             },
             async SendUpdateRequest() {
-                // const response = await axios.patch('/api/teams/' + this.propId, {
-                //     name: this.name,
-                //     sports: this.sportIds,
-                // });
-                //
-                // if (response.status === 200) {
-                //     await this.$store.dispatch('fetchTeamsData');
-                //     this.$router.push({name: 'teams'});
-                // }
+                let teamId = this.findTeamIdByName(this.team);
+
+                const response = await axios.patch('/api/players/' + this.propId, {
+                    name: this.name,
+                    team_id : teamId[0].id
+                });
+
+                if (response.status === 200) {
+                    await this.$store.dispatch('fetchPlayersData');
+                    this.$router.push({name: 'dashboard'});
+                }
             },
             findTeamIdByName(TeamName) {
                 return this.$store.state.teams.filter(teamItem => {
