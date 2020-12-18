@@ -29,7 +29,12 @@ When editing a player, it must be possible to change the name and the team of th
 There should be the possibility to add a new player as well.
 
 ### things I've Used in this Project
+for Backeend:
+
 Routing, Controllers, FormRequests, JsonResources, Database Migration Files, Seeders, Factories, UnitTesting
+
+for Front-end:
+VueJs, TailwindCss, Vuex, Vue-Router
 
 ### Video Introduction ,I say Definitely have a look at it !
  [Watch Video - Click Here ](https://payam.pro/playerteams.mp4) 
