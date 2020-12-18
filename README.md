@@ -20,7 +20,7 @@ The Vue JS or React JS app should display a table which should contain the follo
 
 Player Name - Team Name - Actions
 
-Player A         -   Team 1        - Edit Delete      
+Player A       -   Team 1      - Edit Delete      
 
 Implement the actions in order to be able to edit a player or to delete a player.
 
