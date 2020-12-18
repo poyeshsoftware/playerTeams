@@ -80,7 +80,7 @@ class PlayerControllerTest extends TestCase
     /**
      * @test
      */
-    public function testTeamsJsonStructureIsTrue()
+    public function testPlayersJsonStructureIsTrue()
     {
         $response = $this->get('/api/players');
         $response->assertJsonStructure([
