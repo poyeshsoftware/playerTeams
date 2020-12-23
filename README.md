@@ -60,7 +60,7 @@ or
 - run command : `php artisan db:seed --class=UserSeeder`, if you want to generate just a User and add data by your self.
 
 then
-
+- set axios.defaults.baseURL to your DomainName in the main.js at Resources\Js\main.js and save it. ( Like: axios.defaults.baseURL = 'http://playerteams.test'; )
 - run command : `npm rum watch`
 - run command : `php artisan serve`
 
