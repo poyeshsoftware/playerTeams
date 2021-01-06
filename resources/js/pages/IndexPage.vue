@@ -40,10 +40,8 @@
             }
         },
         methods: {
-
-
             async submit () {
-                await await this.$store.dispatch('signIn',this.form);
+                await this.$store.dispatch('signIn',this.form);
                 this.$router.replace({ name: 'dashboard' })
             }
         }

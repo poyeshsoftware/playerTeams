@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GetPlayersRequest;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Resources\PlayerJsonResource;
 use App\Models\Player;
@@ -12,7 +13,7 @@ class PlayerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(GetPlayersRequest $request)
     {
         return PlayerJsonResource::collection(Player::withFilters());
     }
