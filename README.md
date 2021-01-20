@@ -38,7 +38,7 @@ for Front-end:
 VueJs, TailwindCss, Vuex, Vue-Router
 
 ### Video Introduction ,I say Definitely have a look at it !
- [Watch Video - Click Here ](https://payam.pro/playerteams.mp4) 
+ [Watch Video - Click Here ](https://payamblog.com/playerteams.mp4) 
 
 ## How to Setup project
 
@@ -84,4 +84,4 @@ to use Laravel Sanctum for authentication you neeed to set SANCTUM_STATEFUL_DOMA
 also change the SESSION_DOMAIN and SESSION_DRIVER as I explained.
 
 # Made By :
-Payam GhaderKourehpaz [https://payam.pro](https://payam.pro)
+Payam GhaderKourehpaz [https://payamblog.com](https://payamblog.com)
